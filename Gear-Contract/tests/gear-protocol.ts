@@ -32,10 +32,10 @@ describe("solana-nft-anchor", async () => {
 		.use(mplTokenMetadata());
 
 	const mint = anchor.web3.Keypair.generate();
-	console.log("mint address=",mint.publicKey);
+	// console.log("mint address=",mint.publicKey);
 
 	const user = anchor.web3.Keypair.generate();
-	console.log("user address=",user.publicKey);
+	// console.log("user address=",user.publicKey);
 	
 	const [gearAccount] = await anchor.web3.PublicKey.findProgramAddressSync(
 		[mint.publicKey.toBuffer()],
@@ -47,21 +47,22 @@ describe("solana-nft-anchor", async () => {
 		mint.publicKey,
 		signer.publicKey
 	);
-	console.log("associatedTokenAccount address=",associatedTokenAccount);
+	// console.log("associatedTokenAccount address=",associatedTokenAccount);
 
 	// derive the metadata account
 	let metadataAccount = findMetadataPda(umi, {
 		mint: publicKey(mint.publicKey),
 	})[0];
-	console.log("metadataAccount address=",metadataAccount);
+	// console.log("metadataAccount address=",metadataAccount);
 
 	//derive the master edition pda
 	let masterEditionAccount = findMasterEditionPda(umi, {
 		mint: publicKey(mint.publicKey),
 	})[0];
-	console.log("masterEditionAccount address=",masterEditionAccount);
+	// console.log("masterEditionAccount address=",masterEditionAccount);
 
 	const metadata = {
+		encrypt_path:"U2FsdGVkX19Q0OIznbsDrRk73PI6VCpTsJ5Sz3afkJHD7/Xsyvs7qSMoNw2Zeqx4",
     	price: 0.0001,
 		name: "DogBro",
 		symbol: "DGB",
@@ -70,7 +71,7 @@ describe("solana-nft-anchor", async () => {
 
 	it("create gear!", async () => {
 		const tx = await program.methods
-			.createGear(metadata.name, metadata.symbol, metadata.uri, metadata.price)
+			.createGear(metadata.name, metadata.symbol, metadata.uri, metadata.price, metadata.encrypt_path)
 			.accounts({
 				signer: provider.publicKey,
 				mint: mint.publicKey,

@@ -5,13 +5,13 @@ seeds = false
 skip-lint = false
 
 [programs.devnet]
-gear_protocol = "9kFWw3AnZXiTAgj3Les4sxGxmMmFLPQH79NGwZ32GSvP"
+gear_protocol = "Ders6v6yfeAN2WVXUoNZbQ778YxTLe3dF4tBBo4dURDo"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "devnet"
+cluster = "Devnet"
 wallet = "/Users/KyrieLi/.config/solana/id.json"
 
 [scripts]

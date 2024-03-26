@@ -2,17 +2,18 @@ use crate::state::*;
 use anchor_lang::prelude::*;
 
 pub fn claim(ctx: Context<ClaimToken>) -> Result<()> {
-    let pda_account: AccountInfo<'_> = ctx.accounts.gear.to_account_info();
+    let gear_account: AccountInfo<'_> = ctx.accounts.gear.to_account_info();
     let rent = Rent::get()?;
-    let rent_lamports = rent.minimum_balance(16);
-    let lamports = pda_account.lamports() - rent_lamports;
+    let rent_lamports = rent.minimum_balance(gear_account.data_len());
+    msg!("gear_account data len={}", gear_account.data_len());
+    let lamports = gear_account.lamports() - rent_lamports;
     let send_to_account = ctx.accounts.signer.to_account_info();
-    msg!("pda_account balance={}", pda_account.as_ref().lamports());
+    msg!("gear_account balance={}", gear_account.as_ref().lamports());
     msg!("send_to_account balance={}", send_to_account.as_ref().lamports());
-    msg!("transfer lamports from={} to={}, amount={}", pda_account.as_ref().key(), send_to_account.as_ref().key(), lamports);
-    **pda_account.try_borrow_mut_lamports()? -= lamports;
+    msg!("transfer lamports from={} to={}, amount={}", gear_account.as_ref().key(), send_to_account.as_ref().key(), lamports);
+    **gear_account.try_borrow_mut_lamports()? -= lamports;
     **send_to_account.try_borrow_mut_lamports()? += lamports;
-    msg!("pda_account balance={}", pda_account.as_ref().lamports());
+    msg!("gear_account balance={}", gear_account.as_ref().lamports());
     msg!("send_to_account balance={}", send_to_account.as_ref().lamports());
     Ok(())
 }

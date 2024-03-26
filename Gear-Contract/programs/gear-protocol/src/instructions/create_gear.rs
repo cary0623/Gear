@@ -15,7 +15,7 @@ use mpl_token_metadata::accounts::{MasterEdition, Metadata as MetadataAccount};
 use anchor_spl::metadata::mpl_token_metadata::types::DataV2;
 
 
-pub fn create_gear(ctx: Context<CreateGear>, name: String, symbol: String, uri: String, price: f64) -> Result<()> {
+pub fn create_gear(ctx: Context<CreateGear>, name: String, symbol: String, uri: String, price: f64, encrypt_path: String) -> Result<()> {
     // MINT NFT
     let cpi_context = CpiContext::new(
         ctx.accounts.token_program.to_account_info(), 
@@ -68,6 +68,8 @@ pub fn create_gear(ctx: Context<CreateGear>, name: String, symbol: String, uri: 
     // saving price to PDA
     let new_gear = &mut ctx.accounts.gear_account;
     new_gear.price = price;
+    new_gear.encrypt_path = encrypt_path;
+    msg!("gear encrypt_path={}", new_gear.encrypt_path);
     msg!("gear account address={}", ctx.accounts.gear_account.key());
     Ok(())    
 }
@@ -81,7 +83,7 @@ pub struct CreateGear<'info> {
     #[account(
         init, 
         payer=signer, 
-        space = 8 + 8,
+        space = 8 + Gear::INIT_SPACE,
         seeds = [mint.key().as_ref()],
         bump
     )]

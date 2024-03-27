@@ -12,7 +12,7 @@ pub fn call(ctx: Context<CallGear>) -> Result<()> {
     msg!("user balance={}", user_balance);
     msg!("call amount {}", amount_lamports);
     msg!("send_to_account balance={}", to.as_ref().lamports());
-    msg!("transfer lamports from={} to={}, amount={} sol", from.as_ref().key(), to.as_ref().key(), amount_lamports);
+    msg!("transfer lamports from={} to={}, amount={} lamport", from.as_ref().key(), to.as_ref().key(), amount_lamports);
     require!(user_balance >= amount_lamports, GearError::InsufficientBalanceToCall);
     let transfer_instruction = anchor_lang::solana_program::system_instruction::transfer(from.key, to.key, amount_lamports);
     anchor_lang::solana_program::program::invoke_signed(

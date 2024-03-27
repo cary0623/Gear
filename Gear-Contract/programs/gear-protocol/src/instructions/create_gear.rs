@@ -64,13 +64,11 @@ pub fn create_gear(ctx: Context<CreateGear>, name: String, symbol: String, uri: 
             rent: ctx.accounts.rent.to_account_info()
         }
     );
-    create_master_edition_v3(cpi_context, None)?;
+    create_master_edition_v3(cpi_context, Some(1))?;
     // saving price to PDA
     let new_gear = &mut ctx.accounts.gear_account;
     new_gear.price = price;
     new_gear.encrypt_path = encrypt_path;
-    msg!("gear encrypt_path={}", new_gear.encrypt_path);
-    msg!("gear account address={}", ctx.accounts.gear_account.key());
     Ok(())    
 }
 

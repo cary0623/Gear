@@ -47,19 +47,16 @@ describe("solana-nft-anchor", async () => {
 		mint.publicKey,
 		signer.publicKey
 	);
-	// console.log("associatedTokenAccount address=",associatedTokenAccount);
 
 	// derive the metadata account
 	let metadataAccount = findMetadataPda(umi, {
 		mint: publicKey(mint.publicKey),
 	})[0];
-	// console.log("metadataAccount address=",metadataAccount);
 
 	//derive the master edition pda
 	let masterEditionAccount = findMasterEditionPda(umi, {
 		mint: publicKey(mint.publicKey),
 	})[0];
-	// console.log("masterEditionAccount address=",masterEditionAccount);
 
 	const metadata = {
 		encrypt_path:"U2FsdGVkX19Q0OIznbsDrRk73PI6VCpTsJ5Sz3afkJHD7/Xsyvs7qSMoNw2Zeqx4",
@@ -68,6 +65,12 @@ describe("solana-nft-anchor", async () => {
 		symbol: "DGB",
 		uri: "https://raw.githubusercontent.com/687c/solana-nft-native-client/main/metadata.json",
 	};
+	console.log("user address=",provider.publicKey);
+	console.log("mint NTF address=",mint.publicKey);
+	console.log("assocgearAccountiatedTokenAccount address=",gearAccount);
+	console.log("associatedTokenAccount address=",associatedTokenAccount);
+	console.log("metadataAccount address=",metadataAccount);
+	console.log("masterEditionAccount address=",masterEditionAccount);
 
 	it("create gear!", async () => {
 		const tx = await program.methods

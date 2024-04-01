@@ -32,13 +32,10 @@ class Arweave {
         return await this._irys.getLoadedBalance()
     }
 
-    async uploadData(data: string | Buffer, type: ARWEAVE_CONTENT_TYPE): Promise<any> {
+    async uploadData(data: string | Buffer, type?: string): Promise<any> {
         try {
-            let value = "application/json";
-            if (type === ARWEAVE_CONTENT_TYPE.PNG) {
-                value = "image/png";
-            } else if (type === ARWEAVE_CONTENT_TYPE.JPEG) {
-                value = "image/jpeg";
+            if (!type) {
+                type = "application/json";
             }
 
             // Fund the node
@@ -51,9 +48,9 @@ class Arweave {
             }
 
             const receipt = await this._irys.upload(data, {
-                tags: [{ name: "Content-Type", value: value }]
+                tags: [{ name: "Content-Type", value: type }]
             });
-            return {url: receipt.id, txhash: receipt.signature};  
+            return { url: receipt.id, txhash: receipt.signature };
         } catch (e) {
             console.log("Arweave upload data error: ", e);
             throw e
@@ -93,9 +90,3 @@ export const arweave = new Arweave(
     APP_ENV.ARWEAVE.TOKEN,
     APP_ENV.ARWEAVE.PROVIDER_URL
 )
-
-export const enum ARWEAVE_CONTENT_TYPE {
-    JSON,
-    PNG,
-    JPEG
-}

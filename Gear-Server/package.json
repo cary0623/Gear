@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "dev": "ts-node --files",
     "check-types:incremental": "npm run check-types --incremental",
-    "devwww": "nodemon ./src/www.ts",
+    "devwww": "nodemon ./src/index.ts",
     "test": "mocha --timeout 1000000 --require ts-node/register"
   },
   "keywords": [

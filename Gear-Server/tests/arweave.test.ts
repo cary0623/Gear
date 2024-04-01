@@ -1,4 +1,4 @@
-import { arweave, ARWEAVE_CONTENT_TYPE } from "../src/storage/arweave";
+import { arweave } from "../src/storage/arweave";
 import fs from "fs";
 
 describe("arweave", async () => {
@@ -21,7 +21,7 @@ describe("arweave", async () => {
         "category": "image"
       }
     };
-    let res = await arweave.uploadData(JSON.stringify(data), ARWEAVE_CONTENT_TYPE.JSON);
+    let res = await arweave.uploadData(JSON.stringify(data));
     console.log(`Data uploaded ==> https://arweave.net/${res}`);
   });
 
@@ -29,8 +29,9 @@ describe("arweave", async () => {
     let fileBuffer = await fs.readFileSync(
       __dirname + "/../src/images/nft.png"
     );
-    let res = await arweave.uploadData(fileBuffer, ARWEAVE_CONTENT_TYPE.PNG);
-    console.log(`Data uploaded ==> https://arweave.net/${res}`);
+    let res = await arweave.uploadData(fileBuffer, "image/png");
+    console.log(`Data uploaded ==> https://arweave.net/${res.url}`); // https://arweave.net/t3LLszbFIYvzDa8llqnZ53SmQ_7l_7MJGroFUu9QCNg
+    console.log(`Data uploaded ==> ${res.txhashl}`);
   });
 
   it('getLoadedBalance', async () => {

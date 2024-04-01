@@ -2,7 +2,7 @@ import { mongodb } from '../db/mongo';
 import { Document } from 'bson';
 import { BaseService } from './base';
 
-class CallHistoryService extends BaseService {
+class GearCallHistoryService extends BaseService {
     async createIndex(): Promise<Document> {
         try {
             await mongodb.dba.createIndex(this.table, { user: 1 }, { unique: false, name: 'idx_user' });
@@ -16,4 +16,4 @@ class CallHistoryService extends BaseService {
     }
 }
 
-export const callHistoryService = new CallHistoryService('call_history', 'created_at', 'updated_at');
+export const gearCallHistoryService = new GearCallHistoryService('gear_call_history', 'created_at', 'updated_at');

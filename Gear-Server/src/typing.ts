@@ -54,13 +54,14 @@ export type CreateGearRequest = {
     requestHeaders?: any; // option { "Content-Type": "application/json", "Accept-Encoding": "gzip, deflate, br" }
     requestParams?: any; // { "paramA": "", "paramB": "", "paramC": "" }
     price: string; // 0.175 USDT => 0.175 * 10**18 USDT
-    denom: string; // Token address [BNB_address, USDT_address]
+    denom: string; // Token address [SOL_address, USDT_address]
     logoFile: any; // https://gnfd-testnet-sp3.bnbchain.org/view/bucket-name/object-fold-name/object-name
-    tokeninfo: string;
 };
 
 export type CreateGearResponse = {
     gearId: string;
+    name: string;
+    symbol: string;
     tokenURL: string;
     encryptURL: string;
     denom: string;

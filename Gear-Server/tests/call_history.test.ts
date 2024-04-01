@@ -1,5 +1,5 @@
 import { mongodb } from '../src/db/mongo';
-import { callHistoryService } from '../src/services/call_history';
+import { gearCallHistoryService } from '../src/services/call_history';
 
 describe('CallHistory', async () => {
     describe('base', async () => {
@@ -15,7 +15,7 @@ describe('CallHistory', async () => {
         });
 
         it('creat index', async () => {
-            res = await callHistoryService.createIndex();
+            res = await gearCallHistoryService.createIndex();
         });
     });
 });

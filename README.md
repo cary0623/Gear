@@ -1,4 +1,6 @@
 # Introduction
+Gear introduces a blockchain-based decentralized AI agent network, merging AI and web3 to foster a secure, transparent ecosystem for permissionless intelligent services and financial operations, enabling modular, Lego-like connections between AI agents and smart contracts.
+
 Imagine AI, Web3, and blockchain not as separate things, but like LEGO bricks. They can be put together to access full AI services. That's what Gear is about. It’s like a LEGO box for tech, It opens new income ways for service providers and brings financial innovation to join in AI and blockchain.
 # Our vision
 **Building the LEGO of Decentralized AI on Solana.**

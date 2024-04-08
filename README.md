@@ -21,9 +21,11 @@ Our platform's essence is "composability." In two ways:
 
 We aim to lead and change the De AI Fi LEGO world on Solana.
 
-
 # Website
 https://gearai.world/
+
+# Demo Video
+https://youtu.be/F3aopAsAtF4
 
 # Architecture
 ![Image Architecture](https://github.com/cary0623/Gear/blob/main/Gear-Server/gear.jpg)

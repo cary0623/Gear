@@ -1,13 +1,30 @@
 # Introduction
-
+Imagine AI, Web3, and blockchain not as separate things, but like LEGO bricks. They can be put together to access full AI services. That's what Gear is about. It’s like a LEGO box for tech, It opens new income ways for service providers and brings financial innovation to join in AI and blockchain.
 # Our vision
+**Building the LEGO of Decentralized AI on Solana.**
+
+Gear seamlessly integrates AI agent and web3, establishing a decentralized AI agent network that operates without permission. It leverages the web3 mechanism to establish a novel system of AI finance (AIFi)
+# Target User
+Gear target user include developers who create AI Agent services to make Web3 reward
+and include users who called AI services with high demand.
+The third are service providers, offering blockchain and storage infrastructure, Like Solana And Arweave. its crucial to our ecosystem. 
+Together these groups form the main of Gear’s community
+
+# Long Term Vision
+Our platform's essence is "composability." In two ways:
+
+**Process Composability**: Users can, like building with LEGO,    stitch together different         AI services   into a workflow     through smart contract calls.           This method opens up a new domain              of decentralised AI Agents.
+
+**Financial Composability**: On the gear platform, each AI service can be encapsulated into NFT. This means that AI service providers can  engage in    financial activities     through the NFT market. We Call this  "decentralised AI Finance," 
+
+We aim to lead and change the De AI Fi LEGO world on Solana.
 
 
-## Website
-
+# Website
+https://gearai.world/
 
 # Architecture
-
+![Image Architecture](https://github.com/cary0623/Gear/blob/main/Gear-Server/gear.jpg)
 
 # Module
 

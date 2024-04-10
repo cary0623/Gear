@@ -64,7 +64,7 @@ pub fn create_gear(ctx: Context<CreateGear>, name: String, symbol: String, uri: 
             rent: ctx.accounts.rent.to_account_info()
         }
     );
-    create_master_edition_v3(cpi_context, Some(1))?;
+    create_master_edition_v3(cpi_context, Some(10))?;
     // saving price to PDA
     let new_gear = &mut ctx.accounts.gear_account;
     new_gear.price = price;
